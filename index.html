@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,4 +17,30 @@
 
     <script src="script.js"></script>
 </body>
+</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ayurveda Clinic Payment</title>
+</head>
+<body>
+  <h2>Consultation Payment</h2>
+
+  <button id="payBtn">Pay ₹500</button>
+
+  <script>
+    document.getElementById("payBtn").onclick = async () => {
+      const response = await fetch(
+        "https://your-netlify-site.netlify.app/.netlify/functions/create-payment",
+        { method: "POST" }
+      );
+
+      const data = await response.json();
+
+      // Redirect user to HDFC payment page
+      window.location.href = data.redirect_url;
+    };
+  </script>
+</body>
 </html>
+
